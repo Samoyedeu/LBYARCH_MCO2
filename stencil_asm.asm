@@ -1,61 +1,73 @@
+section .data
+var dq 1.5
+var2 dq 5.1
+zero dq 0.0
+
 section .text
 bits 64
 default rel
-
 global stencil_asm
 
 stencil_asm:
-    ; Function prologue
-    push rbp
-    mov rbp, rsp
+	MOV R9, 0 ; i
+	MOV R10, 0 ; i - n
+	MOV R11, 0 ; counter
+	MOVSD XMM1, [zero]
+	JMP check
+skip:
+	INC R9
+check:
+	CMP R9, 3
+	JL skip
 
-    ; non-volatile
-    ; Arguments:
-    ; [rcx] : int n
-    ; [r8] : int* X
-    ; [rdx]  : int* Y
+	MOV RBX, RCX
+	SUB RBX, 4
 
-    mov rsi, [r8] ; X
-    mov rdi, [rdx]  ; Y
-    mov r8d, [rcx] ; n
+	CMP R9, RBX
+	JG end
+process:
+	MOVSD XMM1, [zero]
+	MOVSD XMM2, [zero]
 
-    ; Loop counter (i)
-    mov r9, 3
+	MOV R10, R9
+	SUB R10, 3
+	MOVSD XMM2, [RDX + R10*8]
+	ADDSD XMM1, XMM2
 
-inner_loop:
-    ; Compare i with (n - 3)
-    cmp r9, r8
-    jae loop_end      ; If i >= (n - 3), exit loop
+	MOV R10, R9
+	SUB R10, 2
+	MOVSD XMM2, [RDX + R10*8]
+	ADDSD XMM1, XMM2
 
-    ; Calculate Y[i]
-    mov r10, r9       ; r10 = i
-    sub r10, 3        ; r10 = i - 3 (index for X)
+	MOV R10, R9
+	SUB R10, 1
+	MOVSD XMM2, [RDX + R10*8]
+	ADDSD XMM1, XMM2
 
-    ; Load X[i - 3] to X[i + 3] into xmm0 - xmm6
-    movsd xmm0, [rsi + r10 * 8]     ; Load X[i - 3] into xmm0
-    movsd xmm1, [rsi + r10 * 8 + 8] ; Load X[i - 2] into xmm1
-    movsd xmm2, [rsi + r10 * 8 + 16]; Load X[i - 1] into xmm2
-    movsd xmm3, [rsi + r10 * 8 + 24]; Load X[i] into xmm3
-    movsd xmm4, [rsi + r10 * 8 + 32]; Load X[i + 1] into xmm4
-    movsd xmm5, [rsi + r10 * 8 + 40]; Load X[i + 2] into xmm5
-    movsd xmm6, [rsi + r10 * 8 + 48]; Load X[i + 3] into xmm6
+	MOV R10, R9
+	MOVSD XMM2, [RDX + R10*8]
+	ADDSD XMM1, XMM2
 
-    ; Add X[i - 3] + X[i - 2] + X[i - 1] + X[i] + X[i + 1] + X[i + 2] + X[i + 3]
-    addsd xmm0, xmm1
-    addsd xmm0, xmm2
-    addsd xmm0, xmm3
-    addsd xmm0, xmm4
-    addsd xmm0, xmm5
-    addsd xmm0, xmm6
+	MOV R10, R9
+	ADD R10, 1
+	MOVSD XMM2, [RDX + R10*8]
+	ADDSD XMM1, XMM2
 
-    ; Store the result in Y[i]
-    movsd [rdi + r10 * 8], xmm0
+	MOV R10, R9
+	ADD R10, 2
+	MOVSD XMM2, [RDX + R10*8]
+	ADDSD XMM1, XMM2
 
-    ; Increment loop counter (i)
-    inc r9
-    jmp inner_loop
+	MOV R10, R9
+	ADD R10, 3
+	MOVSD XMM2, [RDX + R10*8]
+	ADDSD XMM1, XMM2
 
-loop_end:
-    ; Function epilogue
-    pop rbp
-    ret
+	; change vector_y
+	MOVSD [R8 + R11*8], XMM1
+
+	INC R9
+	INC R11
+	JMP check
+end:
+	ret
