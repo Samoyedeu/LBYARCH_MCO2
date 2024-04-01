@@ -64,7 +64,7 @@ process:
 	ADDSD XMM1, XMM2
 
 	; change vector_y
-	MOVSD [R8 + R11*8], XMM1
+	MOVSD [R8 + R9*8], XMM1
 
 	INC R9
 	INC R11
