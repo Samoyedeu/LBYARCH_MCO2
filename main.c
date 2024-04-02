@@ -7,7 +7,7 @@
 #define N 10
 
 // Implement the assembly version
-extern double stencil_asm(int n, int* X, int* Y);
+extern double stencil_asm(int n, double* X, double* Y);
 
 double get_execution_time(clock_t start, clock_t end) {
     return ((double)(end - start)) / CLOCKS_PER_SEC;
