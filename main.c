@@ -29,6 +29,13 @@ int main() {
 
         double* X = malloc(n * sizeof(double));
         double* Y = malloc(n * sizeof(double));
+        if (X == NULL || Y == NULL) {
+            fprintf(stderr, "Failed to allocate memory\n");
+            // Free any allocated memory before exiting
+            free(X);
+            free(Y);
+            exit(EXIT_FAILURE);
+        }
 
         // Initialize vector X with random values
         for (i = 0; i < n; i++) {
