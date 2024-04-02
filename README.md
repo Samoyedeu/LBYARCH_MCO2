@@ -39,7 +39,7 @@ Submitted by:
 ## Program Output with Correctness Check
 
 ### C
-![c program output](c program output.png)
+[![c program output](c program output.png)](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/assembly%20program%20output.png?raw=true)
 
 ### Assembly x86-64
 [Insert screenshot here]
