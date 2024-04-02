@@ -43,17 +43,17 @@ Submitted by:
 ## Program Output with Correctness Check
 
 ### C
-![C Program Output](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/c%20program%20output.png?raw=true)
+![C Program Output](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/Screenshots/c%20program%20output.png?raw=true)
 
 ### Assembly x86-64
-![Assembly Program Output](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/assembly%20program%20output.png?raw=true)
+![Assembly Program Output](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/Screenshots/assembly%20program%20output.png?raw=true)
 
 ## Appendix
 
 ### Screenshot of Sheet 1 (Average Time for Release Mode)
-![Average Time for Release Mode](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/appendix1.png?raw=true)
+![Average Time for Release Mode](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/Screenshots/appendix1.png?raw=true)
 
 ### Screenshot of Sheet 2 (Average Time for Debug Mode)
-![Average Time for Debug Mode](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/appendix2.png?raw=true)
+![Average Time for Debug Mode](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/Screenshots/appendix2.png?raw=true)
 
 ---
