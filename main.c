@@ -15,8 +15,7 @@ double get_execution_time(clock_t start, clock_t end) {
 
 int main() {
     int i;
-    clock_t start_c, end_c;
-    double cpu_time_used_c;
+    clock_t start_time, end_time;
 
     // Length of vectors
     int lengths[] = { 1 << 20, 1 << 24, 1 << 29 }; // {2^20, 2^24, 2^29}
@@ -42,17 +41,17 @@ int main() {
         }
 
         // Start timing for C implementation
-        start_c = clock();
+        start_time = clock();
 
         // Call stencil function (C version)
         stencil_c(n, X, Y);
 
         // End timing for C implementation
-        end_c = clock();
+        end_time = clock();
 
-        cpu_time_used_c = ((double)(end_c - start_c)) / CLOCKS_PER_SEC;
+
         printf("\n\nC Implementation");
-        printf("\nTime taken for vector length %d: %lf seconds\n", n, cpu_time_used_c);
+        printf("\nTime taken for vector length %d: %lf seconds\n", n, ((double)(end_time - start_time)) / CLOCKS_PER_SEC);
 
         // Print the first ten values of vector Y (C implementation)
         printf("\nFirst ten values of vector Y:\n");
@@ -67,17 +66,16 @@ int main() {
         }
 
         // Start timing for assembly implementation
-        start_c = clock();
+        start_time = clock();
 
         // Call stencil function (assembly version)
         stencil_asm(n, X, Y);
 
         // End timing for assembly implementation
-        end_c = clock();
+        end_time = clock();
 
-        cpu_time_used_c = ((double)(end_c - start_c)) / CLOCKS_PER_SEC;
         printf("\n\nAssembly Implementation");
-        printf("\nTime taken for vector length %d: %lf seconds\n", n, cpu_time_used_c);
+        printf("\nTime taken for vector length %d: %lf seconds\n", n, ((double)(end_time - start_time)) / CLOCKS_PER_SEC);
 
         // Print the first ten values of vector Y (assembly implementation)
         printf("\nFirst ten values of vector Y:\n");
