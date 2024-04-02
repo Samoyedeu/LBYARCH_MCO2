@@ -47,10 +47,10 @@ Submitted by:
 ## Appendix
 
 ### Screenshot of Sheet 1 (Average Time for Release Mode)
-[Insert screenshot here]
+![Average Time for Release Mode](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/appendix1.png?raw=true)
 
 ### Screenshot of Sheet 2 (Average Time for Debug Mode)
-[Insert screenshot here]
+![Average Time for Debug Mode](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/appendix2.png?raw=true)
 
 
 
