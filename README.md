@@ -57,4 +57,19 @@ Submitted by:
 
 ---
 
-This readme provides insights into the execution time of kernels in both C and Assembly languages under different modes and vector sizes. Additionally, it includes analysis and screenshots for further reference.
+This readme provides insights into the execution time of kernels in both C and Assembly kernels under different modes and vector sizes. Additionally, it includes analysis and screenshots for further reference.
+
+Note:
+1.) Write a C main program to call the kernels of the C version and x86-64 assembly language.
+2.) Time the kernel portion only.  Both for debug mode and release mode.
+3.) For each kernel version, time the process for vector size n = {220, 224, and  230}.  If 230 is impossible, you may reduce it to the point your machine can support (i.e.,  228 or 229).
+4.) You must run at least 30 times for each version to get the average execution time. 
+5.) For the data, you may initialize each vector with the same or different random value. 
+6.) You will need to check the correctness of your output.  Thus, if the C version is your "sanity check answer key," then the output of the x86-64 version has to be checked with the C version and output correspondingly (i.e., the x86-64 kernel output is correct, etc.).
+7.) Output in GitHub (make sure that I can access your Github):
+a.) Github readme containing the following (debug and release mode; C and x86-64):
+    	i.) comparative execution time and short analysis of the performance of the kernels
+   	ii.) Take a screenshot of the program output with the correctness check (C).
+   	iii.) Take a screenshot of the program output, including the correctness check (x86-64).
+b.) Visual Studio project folder containing complete files (source code: C, x86-64, and all other required files) for others to load and execute your program.
+
