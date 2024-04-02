@@ -43,7 +43,7 @@ Submitted by:
 ## Program Output with Correctness Check
 
 ### C
-![C Program Output](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/assembly%20program%20output.png?raw=true)
+![C Program Output](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/c%20program%20output.png?raw=true)
 
 ### Assembly x86-64
 ![Assembly Program Output](https://github.com/Samoyedeu/LBYARCH_MCO2/blob/master/assembly%20program%20output.png?raw=true)
