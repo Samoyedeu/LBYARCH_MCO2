@@ -16,6 +16,7 @@ double get_execution_time(clock_t start, clock_t end) {
 int main() {
     int i;
     clock_t start_time, end_time;
+    boolean isCorrect = 1;
 
     // Length of vectors
     int lengths[] = { 1 << 20, 1 << 24, 1 << 29 }; // {2^20, 2^24, 2^29}
@@ -29,7 +30,9 @@ int main() {
 
         double* X = malloc(n * sizeof(double));
         double* Y = malloc(n * sizeof(double));
-        if (X == NULL || Y == NULL) {
+        double* Y2 = malloc(n * sizeof(double));
+
+        if (X == NULL || Y == NULL || Y2 == NULL) {
             fprintf(stderr, "Failed to allocate memory\n");
             // Free any allocated memory before exiting
             free(X);
@@ -68,15 +71,18 @@ int main() {
         // printf("\n\n - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
 
         // Reset vector Y to 0.0
+        /*
         for (i = 0; i < n; i++) {
             Y[i] = 0.0;
         }
+        */
+        
 
         // Start timing for assembly implementation
         start_time = clock();
 
         // Call stencil function (assembly version)
-        stencil_asm(n, X, Y);
+        stencil_asm(n, X, Y2);
 
         // End timing for assembly implementation
         end_time = clock();
@@ -87,8 +93,23 @@ int main() {
         // Print the first ten values of vector Y (assembly implementation)
         printf("\nFirst ten values of vector Y:\n");
         for (i = 3; i < N + 3 && i < n; i++) {
-            printf("%.2lf ", Y[i]);
+            printf("%.2lf ", Y2[i]);
         }
+
+        for (i = 0; i < N; i++) {
+            if (Y[i] != Y2[i]) {
+                isCorrect = 0;
+            }
+        }
+
+        printf("\n\nCorrectness Check: ");
+
+        if (isCorrect)
+            printf("PASSED\n");
+        else
+            printf("FAILED\n");
+
+        
         printf("\n\n - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
 
         // Free allocated memory
