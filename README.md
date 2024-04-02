@@ -39,7 +39,7 @@ Submitted by:
 ## Program Output with Correctness Check
 
 ### C
-[Insert screenshot here]
+![c program output](c program output.png)
 
 ### Assembly x86-64
 [Insert screenshot here]
